@@ -1,0 +1,364 @@
+def addressing(a,b,c,d,r):
+    vec1=[128,64,32,16,8,4,2,1]
+
+#--------------------------------------------------------------------------------------------------------------8    
+    if(0<=r<=8):
+        #Ejemplo de entrada IP ----->192.169.93.25/24 a=192 , b=169, c =93 d=25 r=24
+        #contadores i, y
+        #r = bits para red/ pefijo de la mascara
+#calculo de bits de red y host
+        print('Direccion IP: ',a,'.',b,'.',c,'.',d,'/',r)
+        i=0
+        y=0
+        vec=[]
+        while(i<r):
+            vec.append(1)
+            i=i+1
+        if(r<8):
+            x=8-r
+            while(y<x):
+                vec.append(0)
+                y=y+1
+#Calculo direccion de red
+        red=[]
+        if(a>=vec1[0]):
+            a=a-vec1[0]
+            red.append(1)
+        else:
+            red.append(0)
+        if(a>=vec1[1]):
+            a=a-vec1[1]
+            red.append(1)
+        else:
+            red.append(0)
+        if(a>=vec1[2]):
+            a=a-vec1[2]
+            red.append(1)
+        else:
+            red.append(0)
+        if(a>=vec1[3]):
+            a=a-vec1[3]
+            red.append(1)
+        else:
+            red.append(0)
+        if(a>=vec1[4]):
+            a=a-vec1[4]
+            red.append(1)
+        else:
+            red.append(0)
+        if(a>=vec1[5]):
+            a=a-vec1[5]
+            red.append(1)
+        else:
+            red.append(0)
+        if(a>=vec1[6]):
+            a=a-vec1[6]
+            red.append(1)
+        else:
+            red.append(0)
+        if(a>=vec1[7]):
+            a=a-vec1[7]
+            red.append(1)
+        else:
+            red.append(0)
+        
+        j=len(vec)
+        x=0
+        for z in range(j):
+            if (vec[z]==1) and (red[z]==1):
+                x = x + vec1[z]
+        print('La direccion de red es: ',x,'.',0,'.',0,'.',0,'/',r)
+#Calculando la direccion Bcast               
+        Bcast=[]
+        k=7
+        while(vec[k]!=1):
+            k=k-1
+        br=x+vec1[k]-1    
+        print('La direccion de Bcast es: ',br,'.',255,'.',255,'.',255,'/',r)
+#Direccion de la mascara                
+        m=0
+        for w in range(8):
+            if (vec[w]==1):
+                m = m + vec1[w]
+        print('La direccion de la mascara es: ',m,'.',0,'.',0,'.',0,'/',r)
+#Rango de utilizables
+        print('El rango de utilizables: ',x,'.',0,'.',0,'.',1,'/',r,' - ',br,'.',255,'.',255,'.',254,'/',r)        
+#--------------------------------------------------------------------------------------------------------------------16   
+    if(8<r<=16):
+        #contadores i, y
+#calculo de bits de red y host        
+        print('Direccion IP: ',a,'.',b,'.',c,'.',d,'/',r)
+        i=8
+        y=0
+      
+        vec=[]
+     
+        while(i<r):
+            vec.append(1)
+            i=i+1
+        if(r<16):
+            x=16-r
+            while(y<x):
+                vec.append(0)
+                y=y+1  
+#Calculo direccion de red
+        red=[]
+        if(b>=vec1[0]):
+            b=b-vec1[0]
+            red.append(1)
+        else:
+            red.append(0)
+        if(b>=vec1[1]):
+            b=b-vec1[1]
+            red.append(1)
+        else:
+            red.append(0)
+        if(b>=vec1[2]):
+            b=b-vec1[2]
+            red.append(1)
+        else:
+            red.append(0)
+        if(b>=vec1[3]):
+            b=b-vec1[3]
+            red.append(1)
+        else:
+            red.append(0)
+        if(b>=vec1[4]):
+            b=b-vec1[4]
+            red.append(1)
+        else:
+            red.append(0)
+        if(b>=vec1[5]):
+            b=b-vec1[5]
+            red.append(1)
+        else:
+            red.append(0)
+        if(b>=vec1[6]):
+            b=b-vec1[6]
+            red.append(1)
+        else:
+            red.append(0)
+        if(b>=vec1[7]):
+            b=b-vec1[7]
+            red.append(1)
+        else:
+            red.append(0)
+        
+        j=len(vec)
+        x=0
+        for z in range(j):
+            if (vec[z]==1) and (red[z]==1):
+                x = x + vec1[z]
+        print('La direccion de red es: ',a,'.',x,'.',0,'.',0,'/',r)                
+#Calculando la direccion Bcast               
+        Bcast=[]
+        k=7
+        while(vec[k]!=1):
+            k=k-1
+        br=x+vec1[k]-1    
+        print('La direccion de Bcast es: ',a,'.',br,'.',255,'.',255,'/',r)               
+#Direccion de la mascara                
+        m=0
+        for w in range(8):
+            if (vec[w]==1):
+                m = m + vec1[w]
+        print('La direccion de la mascara es: ',255,'.',m,'.',0,'.',0,'/',r) 
+        
+#Rango de utilizables
+        print('El rango de utilizables: ',a,'.',x,'.',0,'.',1,'/',r,' - ',a,'.',br,'.',255,'.',254,'/',r)                
+                
+#-----------------------------------------------------------------------------------------............................-24      
+    if(16<r<=24):
+        #contadores i, y
+#calculo de bits de red y host        
+        print('Direccion IP: ',a,'.',b,'.',c,'.',d,'/',r)
+        i=16
+        y=0
+      
+        vec=[]
+     
+        while(i<r):
+            vec.append(1)
+            i=i+1
+        if(r<24):
+            x=24-r
+            while(y<x):
+                vec.append(0)
+                y=y+1 
+#Calculo direccion de red
+        red=[]
+        if(c>=vec1[0]):
+            c=c-vec1[0]
+            red.append(1)
+        else:
+            red.append(0)
+        if(c>=vec1[1]):
+            c=c-vec1[1]
+            red.append(1)
+        else:
+            red.append(0)
+        if(c>=vec1[2]):
+            c=c-vec1[2]
+            red.append(1)
+        else:
+            red.append(0)
+        if(c>=vec1[3]):
+            c=c-vec1[3]
+            red.append(1)
+        else:
+            red.append(0)
+        if(c>=vec1[4]):
+            c=c-vec1[4]
+            red.append(1)
+        else:
+            red.append(0)
+        if(c>=vec1[5]):
+            c=c-vec1[5]
+            red.append(1)
+        else:
+            red.append(0)
+        if(c>=vec1[6]):
+            c=c-vec1[6]
+            red.append(1)
+        else:
+            red.append(0)
+        if(c>=vec1[7]):
+            c=c-vec1[7]
+            red.append(1)
+        else:
+            red.append(0)
+        
+        j=len(vec)
+        x=0
+        for z in range(j):
+            if (vec[z]==1) and (red[z]==1):
+                x = x + vec1[z]
+        print('La direccion de red es: ',a,'.',b,'.',x,'.',0,'/',r)                
+#Calculando la direccion Bcast               
+        Bcast=[]
+        k=7
+        while(vec[k]!=1):
+            k=k-1
+        br=x+vec1[k]-1    
+        print('La direccion de Bcast es: ',a,'.',b,'.',br,'.',255,'/',r)
+#Direccion de la mascara                
+        m=0
+        for w in range(8):
+            if (vec[w]==1):
+                m = m + vec1[w]
+        print('La direccion de la mascara es: ',255,'.',255,'.',m,'.',0,'/',r)        
+#Rango de utilizables
+        print('El rango de utilizables: ',a,'.',b,'.',x,'.',1,'/',r,' - ',a,'.',b,'.',br,'.',254,'/',r)
+                
+#---------------------------------------------------------------------------------------------------------------------32                  
+    if(24<r<=32):
+        #contadores i, y
+#calculo de bits de red y host        
+        print('Direccion IP: ',a,'.',b,'.',c,'.',d,'/',r)
+        i=24
+        y=0
+      
+        vec=[]
+     
+        while(i<r):
+            vec.append(1)
+            i=i+1
+        if(r<32):
+            x=32-r
+            while(y<x):
+                vec.append(0)
+                y=y+1
+#Calculo direccion de red
+        red=[]
+        if(d>=vec1[0]):
+            d=d-vec1[0]
+            red.append(1)
+        else:
+            red.append(0)
+        if(d>=vec1[1]):
+            d=d-vec1[1]
+            red.append(1)
+        else:
+            red.append(0)
+        if(d>=vec1[2]):
+            d=d-vec1[2]
+            red.append(1)
+        else:
+            red.append(0)
+        if(d>=vec1[3]):
+            d=d-vec1[3]
+            red.append(1)
+        else:
+            red.append(0)
+        if(d>=vec1[4]):
+            d=d-vec1[4]
+            red.append(1)
+        else:
+            red.append(0)
+        if(d>=vec1[5]):
+            d=d-vec1[5]
+            red.append(1)
+        else:
+            red.append(0)
+        if(d>=vec1[6]):
+            d=d-vec1[6]
+            red.append(1)
+        else:
+            red.append(0)
+        if(d>=vec1[7]):
+            d=d-vec1[7]
+            red.append(1)
+        else:
+            red.append(0)
+        
+        j=len(vec)
+        x=0
+        for z in range(j):
+            if (vec[z]==1) and (red[z]==1):
+                x = x + vec1[z]
+        print('La direccion de red es: ',a,'.',b,'.',c,'.',x,'/',r)                
+#Calculando la direccion Bcast               
+        Bcast=[]
+        k=7
+        while(vec[k]!=1):
+            k=k-1
+        br=x+vec1[k]-1    
+        print('La direccion de Bcast es: ',a,'.',b,'.',c,'.',br,'/',r)           
+#Direccion de la mascara                
+        m=0
+        for w in range(8):
+            if (vec[w]==1):
+                m = m + vec1[w]
+        print('La direccion de la mascara es: ',255,'.',255,'.',255,'.',m,'/',r)
+ 
+#Rango de utilizables
+        print('El rango de utilizables: ',a,'.',b,'.',c,'.',x+1,'/',r,' - ',a,'.',b,'.',c,'.',br-1,'/',r)
+    print('\n\n')
+
+        
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#addressing(192,168,31,64,20)
+
+
+
+
+import re
+q=0
+resultado= []
+count = len(open('ip.txt').readlines())
+with open('ip.txt', 'r') as f:
+    while(q<count):
+        texto = f.readline()
+        match = re.search(r'([\w\.-]+) ([\w\.-]+) ([\w\.-]+) ([\w\.-]+) ([\w\.-]+)', texto)
+        if match:
+            ax=int(match.group(1))
+            bx=int(match.group(2))
+            cx=int(match.group(3))
+            dx=int(match.group(4))
+            rx=int(match.group(5))
+            addressing(ax,bx,cx,dx,rx)
+            t=addressing(ax,bx,cx,dx,rx)
+            resultado= []
+            resultado.append(t)
+            q=q+1
